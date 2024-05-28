@@ -1,6 +1,187 @@
 # aws_cli
 Guia  sobre o Uso do AWS CLI: Comandos Essenciais e Avançados
 
+### Guia Completo sobre o Uso do AWS CLI: Comandos Essenciais e Avançados
+
+A AWS Command Line Interface (CLI) é uma ferramenta poderosa que permite interagir com os serviços da AWS diretamente do seu terminal. Desde tarefas básicas até operações avançadas, o AWS CLI pode facilitar muito o gerenciamento dos recursos na nuvem. Este artigo abordará os principais comandos que você deve conhecer, desde os mais básicos até os avançados, para aproveitar ao máximo a AWS CLI.
+
+### Configuração Inicial
+
+Antes de explorar os comandos, é necessário configurar o AWS CLI com suas credenciais. As chaves de acesso da AWS (Access Key ID e Secret Access Key) são essenciais para autenticar e autorizar suas solicitações à AWS.
+
+- **Access Key ID**: Um identificador único para a chave de acesso.
+- **Secret Access Key**: Um segredo usado para assinar suas solicitações para a AWS.
+
+Para configurar o AWS CLI com suas credenciais, use o seguinte comando:
+
+```
+aws configure
+
+```
+
+Você será solicitado a fornecer:
+
+- **AWS Access Key ID**
+- **AWS Secret Access Key**
+- **Default region name** (ex: us-east-1)
+- **Default output format** (json, text, table)
+
+### Comandos Essenciais do AWS CLI
+
+1. **`aws sts get-caller-identity`**
+    - **Descrição**: Retorna detalhes sobre a entidade AWS que está fazendo a chamada à API.
+    - **Exemplo**:
+        
+        ```
+        aws sts get-caller-identity
+        
+        ```
+        
+    - **Uso**: Verificar qual usuário ou role está autenticado.
+2. **`aws s3 ls`**
+    - **Descrição**: Lista todos os buckets S3 em sua conta.
+    - **Exemplo**:
+        
+        ```
+        aws s3 ls
+        
+        ```
+        
+    - **Uso**: Visualizar os buckets disponíveis.
+3. **`aws ec2 describe-instances`**
+    - **Descrição**: Lista todas as instâncias EC2 em sua conta.
+    - **Exemplo**:
+        
+        ```
+        aws ec2 describe-instances
+        
+        ```
+        
+    - **Uso**: Obter detalhes sobre suas instâncias EC2.
+4. **`aws s3 cp`**
+    - **Descrição**: Copia arquivos entre seu sistema local e um bucket S3.
+    - **Exemplo**:
+        
+        ```
+        aws s3 cp myfile.txt s3://mybucket/myfile.txt
+        
+        ```
+        
+    - **Uso**: Transferir arquivos para e do S3.
+    - **Opções adicionais**: Use `-recursive` para copiar diretórios inteiros.
+        
+        ```
+        aws s3 cp mydir s3://mybucket/mydir --recursive
+        
+        ```
+        
+5. **`aws ec2 start-instances`**
+    - **Descrição**: Inicia uma ou mais instâncias EC2.
+    - **Exemplo**:
+        
+        ```
+        aws ec2 start-instances --instance-ids i-1234567890abcdef0
+        
+        ```
+        
+    - **Uso**: Iniciar instâncias EC2 específicas.
+6. **`aws ec2 stop-instances`**
+    - **Descrição**: Para uma ou mais instâncias EC2.
+    - **Exemplo**:
+        
+        ```
+        aws ec2 stop-instances --instance-ids i-1234567890abcdef0
+        
+        ```
+        
+    - **Uso**: Parar instâncias EC2 específicas.
+7. **`aws iam list-users`**
+    - **Descrição**: Lista todos os usuários IAM na sua conta.
+    - **Exemplo**:
+        
+        ```
+        aws iam list-users
+        
+        ```
+        
+    - **Uso**: Gerenciar usuários IAM.
+8. **`aws lambda invoke`**
+    - **Descrição**: Invoca uma função Lambda e retorna a resposta.
+    - **Exemplo**:
+        
+        ```
+        aws lambda invoke --function-name MyFunction output.txt
+        
+        ```
+        
+    - **Uso**: Executar funções Lambda e verificar suas respostas.
+9. **`aws dynamodb scan`**
+    - **Descrição**: Escaneia uma tabela DynamoDB e retorna os itens correspondentes.
+    - **Exemplo**:
+        
+        ```
+        aws dynamodb scan --table-name MyTable
+        
+        ```
+        
+    - **Uso**: Obter todos os itens de uma tabela DynamoDB.
+10. **`aws cloudformation deploy`**
+    - **Descrição**: Implanta um stack do AWS CloudFormation.
+    - **Exemplo**:
+        
+        ```
+        aws cloudformation deploy --template-file mytemplate.yaml --stack-name mystack
+        
+        ```
+        
+    - **Uso**: Gerenciar stacks do CloudFormation.
+
+### Comandos Avançados do AWS CLI
+
+Além dos comandos essenciais, há comandos mais avançados que podem ser extremamente úteis para administradores de sistemas e desenvolvedores:
+
+1. **`aws s3 sync`**
+    - **Descrição**: Sincroniza diretórios locais com buckets S3.
+    - **Exemplo**:
+        
+        ```
+        aws s3 sync . s3://mybucket
+        
+        ```
+        
+    - **Uso**: Backup e sincronização de dados.
+2. **`aws cloudwatch get-metric-statistics`**
+    - **Descrição**: Obtém estatísticas para uma métrica do CloudWatch.
+    - **Exemplo**:
+        
+        ```
+        aws cloudwatch get-metric-statistics --metric-name CPUUtilization --start-time 2023-05-26T00:00:00Z --end-time 2023-05-26T23:59:59Z --period 3600 --namespace AWS/EC2 --statistics Average
+        
+        ```
+        
+    - **Uso**: Monitoramento detalhado de recursos.
+3. **`aws rds describe-db-instances`**
+    - **Descrição**: Lista todas as instâncias de banco de dados RDS.
+    - **Exemplo**:
+        
+        ```
+        aws rds describe-db-instances
+        
+        ```
+        
+    - **Uso**: Gerenciamento de bancos de dados RDS.
+4. **`aws ecs list-clusters`**
+    - **Descrição**: Lista todos os clusters ECS.
+    - **Exemplo**:
+        
+        ```
+        aws ecs list-clusters
+        
+        ```
+        
+    - **Uso**: Gerenciamento de clusters ECS.
+5. *
+
 
 
 ### Mais Dicas e Práticas para Maximizar o Uso do AWS CLI
